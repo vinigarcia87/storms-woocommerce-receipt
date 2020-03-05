@@ -104,7 +104,7 @@ if( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 		 */
 		public function include_emails($emails) {
 			if( ! isset( $emails['Storms_WC_Receipt_Email'] ) ) {
-				$emails['Storms_WC_Receipt_Email'] = include( dirname( __FILE__ ) . '/includes/class-storms-wc-receipt-email.php');
+				$emails['Storms_WC_Receipt_Email'] = include( dirname( __FILE__ ) . '/includes/class-storms-wc-receipt-email.php' );
 			}
 
 			return $emails;
