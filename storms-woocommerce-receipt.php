@@ -25,7 +25,7 @@ if( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 	/**
 	 * WooCommerce Storms Receipt main class
 	 */
-	class WC_Storms_Receipt
+	class Storms_WC_Receipt
 	{
 		/**
 		 * Plugin version.
@@ -112,6 +112,6 @@ if( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', ge
 
 	}
 
-	add_action( 'plugins_loaded', array( 'WC_Storms_Receipt', 'get_instance' ) );
+	add_action( 'plugins_loaded', array( 'Storms_WC_Receipt', 'get_instance' ) );
 
 }
