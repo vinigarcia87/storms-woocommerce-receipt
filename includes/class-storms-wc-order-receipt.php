@@ -33,7 +33,7 @@ class WC_Storms_Order_Receipt {
     public function register_receipt_metabox() {
         add_meta_box(
             'wc_storms_receipt',
-			esc_html__( 'Nota Fiscal', 'wc-storms-receipt' ),
+			esc_html__( 'Nota Fiscal', 'storms' ),
             array( $this, 'metabox_content' ),
             'shop_order',
             'side',
@@ -48,14 +48,14 @@ class WC_Storms_Order_Receipt {
      * @param WC_Post $post Post data.
      */
     public function metabox_content( $post ) {
-		echo '<label for="storms_receiptNumber">' . esc_html__( 'Número da Nota Fiscal:', 'wc-storms-receipt' ) . '</label><br />';
-		echo '<input type="text" id="storms_receiptNumber" name="storms_receiptNumber" value="' . esc_attr( get_post_meta( $post->ID, _storms_receipt_number(), true ) ) . '" style="width: 100%;" />';
+		echo '<label for="storms_receiptNumber">' . esc_html__( 'Número da Nota Fiscal:', 'storms' ) . '</label><br />';
+		echo '<input type="text" id="storms_receiptNumber" name="storms_receiptNumber" value="' . esc_attr( get_post_meta( $post->ID, _storms_wc_receipt_number(), true ) ) . '" style="width: 100%;" />';
 
-		echo '<label for="storms_receiptSerie">' . esc_html__( 'Série da Nota Fiscal:', 'wc-storms-receipt' ) . '</label><br />';
-		echo '<input type="text" id="storms_receiptSerie" name="storms_receiptSerie" value="' . esc_attr( get_post_meta( $post->ID, _storms_receipt_serie(), true ) ) . '" style="width: 100%;" />';
+		echo '<label for="storms_receiptSerie">' . esc_html__( 'Série da Nota Fiscal:', 'storms' ) . '</label><br />';
+		echo '<input type="text" id="storms_receiptSerie" name="storms_receiptSerie" value="' . esc_attr( get_post_meta( $post->ID, _storms_wc_receipt_serie(), true ) ) . '" style="width: 100%;" />';
 
-        echo '<label for="storms_receiptKey">' . esc_html__( 'Chave da Nota Fiscal:', 'wc-storms-receipt' ) . '</label><br />';
-        echo '<input type="text" id="storms_receiptKey" name="storms_receiptKey" value="' . esc_attr( get_post_meta( $post->ID, _storms_receipt_key(), true ) ) . '" style="width: 100%;" />';
+        echo '<label for="storms_receiptKey">' . esc_html__( 'Chave da Nota Fiscal:', 'storms' ) . '</label><br />';
+        echo '<input type="text" id="storms_receiptKey" name="storms_receiptKey" value="' . esc_attr( get_post_meta( $post->ID, _storms_wc_receipt_key(), true ) ) . '" style="width: 100%;" />';
     }
 
     /**
@@ -96,4 +96,6 @@ class WC_Storms_Order_Receipt {
     }
 }
 
-new WC_Storms_Order_Receipt();
+if( is_admin() ) {
+	new WC_Storms_Order_Receipt();
+}

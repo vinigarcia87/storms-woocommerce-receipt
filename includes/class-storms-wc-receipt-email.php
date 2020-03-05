@@ -16,23 +16,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Storms Receipt email.
  */
-class WC_Storms_Receipt_Email extends WC_Email {
+class Storms_WC_Receipt_Email extends WC_Email {
 
 	/**
 	 * Initialize receipt template.
 	 */
 	public function __construct() {
 		$this->id               = 'storms_receipt';
-		$this->title            = __( 'Notal Fiscal', 'wc-storms-receipt' );
+		$this->title            = __( 'Notal Fiscal', 'storms' );
 		$this->customer_email   = true;
-		$this->description      = __( 'Este e-mail é enviado quando uma Notal Fiscal é informada em um pedido.', 'wc-storms-receipt' );
-		$this->heading          = __( 'A Notal Fiscal do seu pedido está disponível', 'wc-storms-receipt' );
-		$this->subject          = __( '[{site_title}] Seu pedido {order_number} recebeu uma Notal Fiscal', 'wc-storms-receipt' );
-		$this->message          = __( 'Olá! O número da Notal Fiscal do seu pedido é: {receipt_number} e a série é {receipt_serie}.', 'wc-storms-receipt' )
+		$this->description      = __( 'Este e-mail é enviado quando uma Notal Fiscal é informada em um pedido.', 'storms' );
+		$this->heading          = __( 'A Notal Fiscal do seu pedido está disponível', 'storms' );
+		$this->subject          = __( '[{site_title}] Seu pedido {order_number} recebeu uma Notal Fiscal', 'storms' );
+		$this->message          = __( 'Olá! O número da Notal Fiscal do seu pedido é: {receipt_number} e a série é {receipt_serie}.', 'storms' )
 									. PHP_EOL . ' ' . PHP_EOL
-									. __( 'Se você tiver dúvidas ou perguntas, por favor, entre em contato conosco.', 'wc-storms-receipt' )
+									. __( 'Se você tiver dúvidas ou perguntas, por favor, entre em contato conosco.', 'storms' )
 									. PHP_EOL . ' ' . PHP_EOL
-									. __( 'Segue abaixo os detalhes do seu pedido:', 'wc-storms-receipt' );
+									. __( 'Segue abaixo os detalhes do seu pedido:', 'storms' );
 		$this->receipt_message = $this->get_option( 'receipt_message', $this->message );
 		$this->template_html    = 'emails/storms-receipt.php';
 		$this->template_plain   = 'emails/plain/storms-receipt.php';
@@ -49,39 +49,39 @@ class WC_Storms_Receipt_Email extends WC_Email {
 	public function init_form_fields() {
 		$this->form_fields = array(
 			'enabled' => array(
-				'title'   => __( 'Enable/Disable', 'wc-storms-receipt' ),
+				'title'   => __( 'Enable/Disable', 'storms' ),
 				'type'    => 'checkbox',
-				'label'   => __( 'Enable this email notification', 'wc-storms-receipt' ),
+				'label'   => __( 'Enable this email notification', 'storms' ),
 				'default' => 'yes',
 			),
 			'subject' => array(
-				'title'       => __( 'Subject', 'wc-storms-receipt' ),
+				'title'       => __( 'Subject', 'storms' ),
 				'type'        => 'text',
-				'description' => sprintf( __( 'This controls the email subject line. Leave blank to use the default subject: <code>%s</code>.', 'wc-storms-receipt' ), $this->subject ),
+				'description' => sprintf( __( 'This controls the email subject line. Leave blank to use the default subject: <code>%s</code>.', 'storms' ), $this->subject ),
 				'placeholder' => $this->subject,
 				'default'     => '',
 				'desc_tip'    => true,
 			),
 			'heading' => array(
-				'title'       => __( 'Email Heading', 'wc-storms-receipt' ),
+				'title'       => __( 'Email Heading', 'storms' ),
 				'type'        => 'text',
-				'description' => sprintf( __( 'This controls the main heading contained within the email. Leave blank to use the default heading: <code>%s</code>.', 'wc-storms-receipt' ), $this->heading ),
+				'description' => sprintf( __( 'This controls the main heading contained within the email. Leave blank to use the default heading: <code>%s</code>.', 'storms' ), $this->heading ),
 				'placeholder' => $this->heading,
 				'default'     => '',
 				'desc_tip'    => true,
 			),
 			'receipt_message' => array(
-				'title'       => __( 'Email Content', 'wc-storms-receipt' ),
+				'title'       => __( 'Email Content', 'storms' ),
 				'type'        => 'textarea',
-				'description' => sprintf( __( 'This controls the initial content of the email. Leave blank to use the default content: <code>%s</code>.', 'wc-storms-receipt' ), $this->message ),
+				'description' => sprintf( __( 'This controls the initial content of the email. Leave blank to use the default content: <code>%s</code>.', 'storms' ), $this->message ),
 				'placeholder' => $this->message,
 				'default'     => '',
 				'desc_tip'    => true,
 			),
 			'email_type' => array(
-				'title'       => __( 'Email type', 'wc-storms-receipt' ),
+				'title'       => __( 'Email type', 'storms' ),
 				'type'        => 'select',
-				'description' => __( 'Choose which format of email to send.', 'wc-storms-receipt' ),
+				'description' => __( 'Choose which format of email to send.', 'storms' ),
 				'default'     => 'html',
 				'class'       => 'email_type wc-enhanced-select',
 				'options'     => $this->get_custom_email_type_options(),
@@ -100,11 +100,11 @@ class WC_Storms_Receipt_Email extends WC_Email {
 			return $this->get_email_type_options();
 		}
 
-		$types = array( 'plain' => __( 'Plain text', 'wc-storms-receipt' ) );
+		$types = array( 'plain' => __( 'Plain text', 'storms' ) );
 
 		if ( class_exists( 'DOMDocument' ) ) {
-			$types['html']      = __( 'HTML', 'wc-storms-receipt' );
-			$types['multipart'] = __( 'Multipart', 'wc-storms-receipt' );
+			$types['html']      = __( 'HTML', 'storms' );
+			$types['multipart'] = __( 'Multipart', 'storms' );
 		}
 
 		return $types;
@@ -143,8 +143,8 @@ class WC_Storms_Receipt_Email extends WC_Email {
 			$placeholders['{date}'] = date_i18n( wc_date_format(), time() );
 
 			if ( empty( $receipt_number ) || empty( $receipt_serie ) ) {
-				$receipt_number = get_post_meta( $this->object->get_id(), _storms_receipt_number(), true );
-				$receipt_serie = get_post_meta( $this->object->get_id(), _storms_receipt_serie(), true );
+				$receipt_number = get_post_meta( $this->object->get_id(), _storms_wc_receipt_number(), true );
+				$receipt_serie = get_post_meta( $this->object->get_id(), _storms_wc_receipt_serie(), true );
 			}
 
 			$placeholders['{receipt_number}'] = $receipt_number;
@@ -199,4 +199,4 @@ class WC_Storms_Receipt_Email extends WC_Email {
 	}
 }
 
-return new WC_Storms_Receipt_Email();
+return new Storms_WC_Receipt_Email();

@@ -13,14 +13,14 @@ echo '= ' . $email_heading . " =\n\n";
 
 echo wptexturize( $receipt_message ) . "\n\n";
 
-echo __( 'Para referência, segue abaixo os detalhes do seu pedido.', 'wc-storms-receipt' ) . "\n\n";
+echo __( 'Para referência, segue abaixo os detalhes do seu pedido.', 'storms' ) . "\n\n";
 
 echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n";
 
 do_action( 'woocommerce_email_before_order_table', $order, $sent_to_admin, $plain_text );
 
-printf( __( 'Número do Pedido: %s', 'wc-storms-receipt' ), $order->get_order_number() ) . "\n";
-printf( __( 'Data do Pedido: %s', 'wc-storms-receipt' ), date_i18n( wc_date_format(), strtotime( $order->get_order_date() ) ) ) . "\n";
+printf( __( 'Número do Pedido: %s', 'storms' ), $order->get_order_number() ) . "\n";
+printf( __( 'Data do Pedido: %s', 'storms' ), date_i18n( wc_date_format(), strtotime( $order->get_order_date() ) ) ) . "\n";
 
 do_action( 'woocommerce_email_order_meta', $order, $sent_to_admin, $plain_text );
 

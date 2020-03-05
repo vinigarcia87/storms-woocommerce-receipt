@@ -14,18 +14,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <?php echo wptexturize( wpautop( $receipt_message ) ); ?>
 
-<p><?php esc_html_e( 'Para referência, segue abaixo os detalhes do seu pedido.', 'wc-storms-receipt' ); ?></p>
+<p><?php esc_html_e( 'Para referência, segue abaixo os detalhes do seu pedido.', 'storms' ); ?></p>
 
 <?php do_action( 'woocommerce_email_before_order_table', $order, $sent_to_admin, $plain_text ); ?>
 
-<h2><?php echo esc_html( __( 'Pedido:', 'wc-storms-receipt' ) . ' ' . $order->get_order_number() ); ?></h2>
+<h2><?php echo esc_html( __( 'Pedido:', 'storms' ) . ' ' . $order->get_order_number() ); ?></h2>
 
 <table cellspacing="0" cellpadding="6" style="width: 100%; border: 1px solid #eee;" border="1" bordercolor="#eee">
 	<thead>
 		<tr>
-			<th scope="col" style="text-align:left; border: 1px solid #eee;"><?php esc_html_e( 'Produto', 'wc-storms-receipt' ); ?></th>
-			<th scope="col" style="text-align:left; border: 1px solid #eee;"><?php esc_html_e( 'Quantidade', 'wc-storms-receipt' ); ?></th>
-			<th scope="col" style="text-align:left; border: 1px solid #eee;"><?php esc_html_e( 'Preço', 'wc-storms-receipt' ); ?></th>
+			<th scope="col" style="text-align:left; border: 1px solid #eee;"><?php esc_html_e( 'Produto', 'storms' ); ?></th>
+			<th scope="col" style="text-align:left; border: 1px solid #eee;"><?php esc_html_e( 'Quantidade', 'storms' ); ?></th>
+			<th scope="col" style="text-align:left; border: 1px solid #eee;"><?php esc_html_e( 'Preço', 'storms' ); ?></th>
 		</tr>
 	</thead>
 	<tbody>

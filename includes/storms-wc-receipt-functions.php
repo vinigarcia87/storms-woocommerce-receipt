@@ -9,28 +9,28 @@
  * @version   1.0.0
  */
 
-function storms_receipt_number() {
-	return 'storms_receipt_number';
+function storms_wc_receipt_number() {
+	return 'storms_wc_receipt_number';
 }
 
-function _storms_receipt_number() {
-	return '_' . storms_receipt_number();
+function _storms_wc_receipt_number() {
+	return '_' . storms_wc_receipt_number();
 }
 
-function storms_receipt_serie() {
-	return 'storms_receipt_serie';
+function storms_wc_receipt_serie() {
+	return 'storms_wc_receipt_serie';
 }
 
-function _storms_receipt_serie() {
-	return '_' . storms_receipt_serie();
+function _storms_wc_receipt_serie() {
+	return '_' . storms_wc_receipt_serie();
 }
 
-function storms_receipt_key() {
-    return 'storms_receipt_key';
+function storms_wc_receipt_key() {
+    return 'storms_wc_receipt_key';
 }
 
-function _storms_receipt_key() {
-    return '_' . storms_receipt_key();
+function _storms_wc_receipt_key() {
+    return '_' . storms_wc_receipt_key();
 }
 
 /**
@@ -42,20 +42,20 @@ function _storms_receipt_key() {
  */
 function wc_storms_update_receipt_number( $order_id, $receipt_number ) {
 	$receipt_number = sanitize_text_field( $receipt_number );
-	$current       = get_post_meta( $order_id, _storms_receipt_number(), true );
+	$current       = get_post_meta( $order_id, _storms_wc_receipt_number(), true );
 
 	if ( '' !== $receipt_number && $receipt_number !== $current ) {
-		update_post_meta( $order_id, _storms_receipt_number(), $receipt_number );
+		update_post_meta( $order_id, _storms_wc_receipt_number(), $receipt_number );
 
 		// Gets order data.
 		$order = wc_get_order( $order_id );
 
 		// Add order note.
-		$order->add_order_note( sprintf( __( 'Adicionado o Número da Nota Fiscal: %s', 'wc-storms-receipt' ), $receipt_number ) );
+		$order->add_order_note( sprintf( __( 'Adicionado o Número da Nota Fiscal: %s', 'storms' ), $receipt_number ) );
 
 		return true;
 	} elseif ( '' === $receipt_number ) {
-		delete_post_meta( $order_id, _storms_receipt_number() );
+		delete_post_meta( $order_id, _storms_wc_receipt_number() );
 
 		return true;
 	}
@@ -72,20 +72,20 @@ function wc_storms_update_receipt_number( $order_id, $receipt_number ) {
  */
 function wc_storms_update_receipt_serie( $order_id, $receipt_serie ) {
 	$receipt_serie = sanitize_text_field( $receipt_serie );
-	$current       = get_post_meta( $order_id, _storms_receipt_serie(), true );
+	$current       = get_post_meta( $order_id, _storms_wc_receipt_serie(), true );
 
 	if ( '' !== $receipt_serie && $receipt_serie !== $current ) {
-		update_post_meta( $order_id, _storms_receipt_serie(), $receipt_serie );
+		update_post_meta( $order_id, _storms_wc_receipt_serie(), $receipt_serie );
 
 		// Gets order data.
 		$order = wc_get_order( $order_id );
 
 		// Add order note.
-		$order->add_order_note( sprintf( __( 'Adicionado a Série da Nota Fiscal: %s', 'wc-storms-receipt' ), $receipt_serie ) );
+		$order->add_order_note( sprintf( __( 'Adicionado a Série da Nota Fiscal: %s', 'storms' ), $receipt_serie ) );
 
 		return true;
 	} elseif ( '' === $receipt_serie ) {
-		delete_post_meta( $order_id, _storms_receipt_serie() );
+		delete_post_meta( $order_id, _storms_wc_receipt_serie() );
 
 		return true;
 	}
@@ -102,20 +102,20 @@ function wc_storms_update_receipt_serie( $order_id, $receipt_serie ) {
  */
 function wc_storms_update_receipt_key( $order_id, $receipt_key ) {
     $receipt_key = sanitize_text_field( $receipt_key );
-    $current       = get_post_meta( $order_id, _storms_receipt_key(), true );
+    $current       = get_post_meta( $order_id, _storms_wc_receipt_key(), true );
 
     if ( '' !== $receipt_key && $receipt_key !== $current ) {
-        update_post_meta( $order_id, _storms_receipt_key(), $receipt_key );
+        update_post_meta( $order_id, _storms_wc_receipt_key(), $receipt_key );
 
         // Gets order data.
         $order = wc_get_order( $order_id );
 
         // Add order note.
-        $order->add_order_note( sprintf( __( 'Adicionado a Chave da Nota Fiscal: %s', 'wc-storms-receipt' ), $receipt_key ) );
+        $order->add_order_note( sprintf( __( 'Adicionado a Chave da Nota Fiscal: %s', 'storms' ), $receipt_key ) );
 
         return true;
     } elseif ( '' === $receipt_key ) {
-        delete_post_meta( $order_id, _storms_receipt_key() );
+        delete_post_meta( $order_id, _storms_wc_receipt_key() );
 
         return true;
     }
@@ -132,7 +132,7 @@ function wc_storms_update_receipt_key( $order_id, $receipt_key ) {
  */
 function wc_storms_trigger_receipt_email( $order, $receipt_number, $receipt_serie ) {
 	$mailer       = WC()->mailer();
-	$notification = $mailer->emails['WC_Storms_Receipt_Email'];
+	$notification = $mailer->emails['Storms_WC_Receipt_Email'];
 
 	if ( 'yes' === $notification->enabled ) {
 		$notification->trigger( $order, $receipt_number, $receipt_serie );
