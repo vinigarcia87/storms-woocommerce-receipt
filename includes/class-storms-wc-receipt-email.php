@@ -40,7 +40,7 @@ class Storms_WC_Receipt_Email extends WC_Email {
 		// Call parent constructor.
 		parent::__construct();
 
-		$this->template_base = WC_Storms_Receipt::get_templates_path();
+		$this->template_base = Storms_WC_Receipt::get_templates_path();
 	}
 
 	/**
