@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<?php do_action( 'woocommerce_email_header', $email_heading ); ?>
+<?php do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 
 <?php echo wptexturize( wpautop( $receipt_message ) ); ?>
 
@@ -73,4 +73,4 @@ do_action( 'woocommerce_email_customer_details', $order, $sent_to_admin, $plain_
  *
  * @hooked WC_Emails::email_footer() Output the email footer.
  */
-do_action( 'woocommerce_email_footer' );
+do_action( 'woocommerce_email_footer', $email );
