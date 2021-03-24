@@ -119,7 +119,7 @@ class Storms_WC_Receipt_REST_API {
 	 * Update receipt serie callback.
 	 *
 	 * @param string  $value  The value of the field.
-	 * @param WP_Post $object The object from the response.
+	 * @param WC_Order $object The object from the response.
 	 *
 	 * @return bool
 	 */
@@ -128,7 +128,7 @@ class Storms_WC_Receipt_REST_API {
 			return;
 		}
 
-		return wc_storms_update_receipt_serie( $object->ID, $value );
+		return wc_storms_update_receipt_serie( $object->get_id(), $value );
 	}
 
     /**
